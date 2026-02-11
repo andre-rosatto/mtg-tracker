@@ -10,7 +10,7 @@ interface AvatarSelectorProps extends React.ComponentProps<'div'> {
 }
 
 export default function AvatarSelector({ index, className, onAvatarChange, ...props }: AvatarSelectorProps) {
-  const [popupOpen, setPopupOpen] = useState(true);
+  const [popupOpen, setPopupOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleAvatarClick = (newIndex: number) => () => {
