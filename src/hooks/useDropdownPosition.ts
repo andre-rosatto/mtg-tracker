@@ -23,7 +23,7 @@ export function useDropdownPosition(
       case 'tr':
         setStyle({
           top: rect.top + window.scrollY,
-          right: rect.right - window.scrollX,
+          right: window.innerWidth - rect.right + window.scrollX,
           zIndex: 1000,
         });
         break;

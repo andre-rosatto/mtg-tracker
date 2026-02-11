@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import AvatarSelector from './components/AvatarSelector';
 import TimedButton from './components/TimedButton';
+import ColorPicker from './components/ColorPicker';
 import { RemovePlayerIcon } from './components/Icons';
 
 export default function App() {
   const [avatarIndex, setAvatarIndex] = useState(0);
+  const [color, setColor] = useState('#000');
 
   return (
     <>
@@ -16,6 +18,7 @@ export default function App() {
       >
         <RemovePlayerIcon />
       </TimedButton>
+      <ColorPicker color={color} className='bg-black' onColorChange={setColor} />
     </>
   );
 }

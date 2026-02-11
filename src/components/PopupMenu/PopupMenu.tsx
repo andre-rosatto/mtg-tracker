@@ -10,20 +10,23 @@ interface PopupMenuProps extends React.ComponentProps<'div'> {
 }
 
 export default function PopupMenu({ triggerRef, visible, anchor, className, children, ...props }: PopupMenuProps) {
-  const style = useDropdownPosition(triggerRef, visible);
+  const style = useDropdownPosition(triggerRef, visible, anchor);
   
   const getAnchorClasses = (anchor: PopupMenuProps['anchor']) => {
     switch (anchor) {
       case 'tl':
-        return 'origin-top-left top-1 left-1';
+        return 'origin-top-left';
       case 'tr':
-        return 'origin-top-right top-1 right-1';
+        return 'origin-top-right';
       case 'bl':
-        return 'origin-bottom-left bottom-1 left-1';
+        return 'origin-bottom-left';
       case 'br':
-        return 'origin-bottom-right bottom-1 right-1';
+        return 'origin-bottom-right';
     }
   }
+
+  console.log(style);
+  
 
   return createPortal(
     <div className={clsx(
