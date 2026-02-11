@@ -25,9 +25,6 @@ export default function PopupMenu({ triggerRef, visible, anchor, className, chil
     }
   }
 
-  console.log(style);
-  
-
   return createPortal(
     <div className={clsx(
         'absolute w-fit transition-all transform-gpu flex flex-col',

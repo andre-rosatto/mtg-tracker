@@ -5,7 +5,7 @@ interface TimedButtonProps {
   duration?: number; // ms
   className?: string;
   children?: React.ReactNode;
-  onComplete: () => void;
+  onComplete?: () => void;
 }
 
 export default function TimedButton({
@@ -24,7 +24,7 @@ export default function TimedButton({
     startTimeRef.current = performance.now();
 
     timerRef.current = setTimeout(() => {
-      onComplete();
+      onComplete?.();
       reset();
     }, duration);
 

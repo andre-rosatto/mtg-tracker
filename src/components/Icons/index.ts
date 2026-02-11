@@ -1,3 +1,3 @@
-import { RemovePlayerIcon, ColorPaletteIcon } from "./Icons";
+import { RemovePlayerIcon, ColorPaletteIcon, TrashIcon } from "./Icons";
 
-export { RemovePlayerIcon, ColorPaletteIcon };
+export { RemovePlayerIcon, ColorPaletteIcon, TrashIcon };
