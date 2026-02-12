@@ -4,25 +4,12 @@ import Toolbar from './components/Toolbar';
 import { avatars } from './components/AvatarSelector/avatars';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
-function getRandomColor(): string {
-  const r = Math.floor(Math.random() * 120);
-  const g = Math.floor(Math.random() * 120);
-  const b = Math.floor(Math.random() * 120);
-  return (
-    '#' +
-    [r, g, b]
-      .map((v) => v.toString(16).padStart(2, '0'))
-      .join('')
-  );
-};
-
 export default function App() {
   const [players, setPlayers] = useLocalStorage<Player[]>('mtg-tracker-players', [
     {
       id: Date.now(),
       name: 'Player 1',
       avatar: Math.floor(Math.random() * avatars.length),
-      color: getRandomColor(),
       life: 20,
       markers: [],
     },
@@ -30,7 +17,6 @@ export default function App() {
       id: Date.now() + 1,
       name: 'Player 2',
       avatar: Math.floor(Math.random() * avatars.length),
-      color: getRandomColor(),
       life: 20,
       markers: [],
     },
@@ -63,7 +49,6 @@ export default function App() {
             id: Date.now(),
             name: `Player ${players.length + 1}`,
             avatar: Math.floor(Math.random() * avatars.length),
-            color: getRandomColor(),
             life: 20,
             markers: [],
           }]);
