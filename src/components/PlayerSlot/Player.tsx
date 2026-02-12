@@ -23,11 +23,16 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
       <div className='flex justify-between w-full'>
         {/* header */}
         <div className='flex items-center gap-1'>
-          <AvatarSelector index={player.avatar} onAvatarChange={newIndex => {onPlayerChange && onPlayerChange({...player, avatar: newIndex})}} />
+          <AvatarSelector
+            index={player.avatar} onAvatarChange={newIndex => {onPlayerChange && onPlayerChange({...player, avatar: newIndex})}}
+            className='w-10 min-w-10'
+          />
           <input
             type="text"
+            name="player-name"
+            autoComplete="on"
             value={player.name}
-            className='text-2xl bg-transparent outline-none min-w-4'
+            className='text-2xl bg-transparent outline-none overflow-hidden w-36'
             onChange={e => onPlayerChange && onPlayerChange({...player, name: e.target.value})}
           ></input>
         </div>
