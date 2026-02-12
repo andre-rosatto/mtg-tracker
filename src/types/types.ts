@@ -10,6 +10,5 @@ export type Player = {
   avatar: number;
   color: string;
   life: number;
-  damage: number;
   markers: Marker[];
 }

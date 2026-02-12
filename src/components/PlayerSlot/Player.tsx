@@ -12,11 +12,9 @@ interface PlayerSlotProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: PlayerSlotProps) {
-  console.log(player);
-
   return (
     <div
-      className='relative flex-1 gap-2 w-full p-2 flex flex-col items-start overflow-hidden'
+      className='relative flex-1 gap-2 w-full min-h-48 p-2 flex flex-col items-start overflow-hidden'
       style={{
         backgroundColor: player.color,
       }}
@@ -26,7 +24,12 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
         {/* header */}
         <div className='flex items-center gap-1'>
           <AvatarSelector index={player.avatar} onAvatarChange={newIndex => {onPlayerChange && onPlayerChange({...player, avatar: newIndex})}} />
-          <h2 className='text-2xl'>{player.name}</h2>
+          <input
+            type="text"
+            value={player.name}
+            className='text-2xl bg-transparent outline-none min-w-4'
+            onChange={e => onPlayerChange && onPlayerChange({...player, name: e.target.value})}
+          ></input>
         </div>
 
         {/* utilities */}
