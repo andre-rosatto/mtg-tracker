@@ -56,7 +56,7 @@ export default function App() {
   }
 
   return (
-    <div className='bg-black max-h-dvh h-dvh min-h-screen flex flex-col text-white'>
+    <div className='bg-black max-h-vh h-vh min-h-screen flex flex-col text-white'>
       <div className='overflow-auto flex-1'>
         {players.map(player => (
           <PlayerSlot key={player.id} player={player} onPlayerChange={handlePlayerChange} onPlayerDelete={handlePlayerDelete} />
