@@ -28,15 +28,19 @@ export default function PopupMenu({ triggerRef, visible, anchor, className, chil
 
   return createPortal(
     <div className={clsx(
-        'absolute w-fit transition-all transform-gpu flex flex-col',
+        'absolute w-fit transition-all transform-gpu flex flex-col drop-shadow-md bg-black/80',
         getAnchorClasses(anchor),
         visible ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
         className
       )} style={style} {...props}>
         <div
-          className='absolute font-extrabold aspect-square text-center mb-1 self-end select-none cursor-pointer w-4 h-4 -right-6'
+          className='absolute font-extrabold aspect-square text-center mb-1 self-end select-none cursor-pointer w-4 h-4 -right-5'
         >
-          <CloseIcon className='w-full h-full' />
+          <CloseIcon
+            strokeWidth={1}
+            stroke='#333333'
+            className='w-full h-full'
+          />
         </div>
       {children}
     </div>,
