@@ -35,7 +35,7 @@ export default function AvatarSelector({ index, className, onAvatarChange, ...pr
         triggerRef={ref}
         visible={popupOpen}
         anchor='tl'
-        className='bg-black border border-amber-600 p-1 rounded-md text-white'
+        className='bg-black border border-neutral-400 p-1 rounded-md text-white'
       >
         <ul className='grid grid-cols-8 gap-1'>
           {avatars.map((avatar, i) => (
@@ -43,7 +43,7 @@ export default function AvatarSelector({ index, className, onAvatarChange, ...pr
               key={i}
               className={clsx(
                 'cursor-pointer rounded-full border-2',
-                i === index ? 'border-amber-500' : 'border-transparent'
+                i === index ? 'border-white' : 'border-transparent'
               )}
               onClick={handleAvatarClick(i)}
             >

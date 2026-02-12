@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { useDropdownPosition } from "../../hooks/useDropdownPosition";
+import { CloseIcon } from "../Icons";
 
 interface PopupMenuProps extends React.ComponentProps<'div'> {
   triggerRef: React.RefObject<HTMLElement | null>;
@@ -32,7 +33,11 @@ export default function PopupMenu({ triggerRef, visible, anchor, className, chil
         visible ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
         className
       )} style={style} {...props}>
-        <div className='font-extrabold aspect-square text-center mb-1 self-end w-fit select-none cursor-pointer'>X</div>
+        <div
+          className='absolute font-extrabold aspect-square text-center mb-1 self-end select-none cursor-pointer w-4 h-4 -right-6'
+        >
+          <CloseIcon className='w-full h-full' />
+        </div>
       {children}
     </div>,
     document.body
