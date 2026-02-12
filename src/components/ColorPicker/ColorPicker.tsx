@@ -12,7 +12,7 @@ export default function ColorPicker({color='#000000', className, onColorChange, 
         type='color'
         value={color}
         onChange={e => onColorChange && onColorChange(e.target.value)}
-        className={clsx('w-10 h-10 p-0 border border-amber-500 rounded-sm bg-transparent cursor-pointer appearance-none [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:border-none', className)}
+        className={clsx('w-8 h-8 p-0 border border-amber-500 rounded-sm bg-transparent cursor-pointer appearance-none [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:border-none', className)}
         {...props}
       />
   );

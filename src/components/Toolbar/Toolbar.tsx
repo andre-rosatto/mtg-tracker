@@ -8,7 +8,7 @@ interface ToolbarProps {
 
 export default function Toolbar({ onRestart, onAddPlayer }: ToolbarProps) {
   return (
-    <div className='grid grid-cols-2 h-10 border-t border-amber-500'>
+    <div className='grid grid-cols-2 h-10 border-b border-amber-500'>
       <TimedButton
         onComplete={ onRestart }
       >

@@ -14,7 +14,7 @@ interface PlayerSlotProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: PlayerSlotProps) {
   return (
     <div
-      className='relative flex-1 gap-2 w-full min-h-48 p-2 flex flex-col items-start overflow-hidden'
+      className='relative flex-1 gap-1 w-full h-38 p-2 flex flex-col items-start overflow-hidden'
       style={{
         backgroundColor: player.color,
       }}
@@ -25,7 +25,6 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
         <div className='flex items-center gap-1'>
           <AvatarSelector
             index={player.avatar} onAvatarChange={newIndex => {onPlayerChange && onPlayerChange({...player, avatar: newIndex})}}
-            className='w-10 min-w-10'
           />
           <input
             type="text"
@@ -40,12 +39,15 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
         {/* utilities */}
         <div className='flex gap-1'>
           <TimedButton
-            className='rounded-sm bg-black text-white w-16 h-10'
+            className='rounded-sm text-white w-10 h-8 mr-1'
             onComplete={() => onPlayerDelete && onPlayerDelete(player.id)}
           >
             <RemovePlayerIcon />
           </TimedButton>
-          <ColorPicker color={player.color} onColorChange={newColor => {onPlayerChange && onPlayerChange({...player, color: newColor})}} />
+          <ColorPicker
+            color={player.color}
+            onColorChange={newColor => {onPlayerChange && onPlayerChange({...player, color: newColor})}}
+          />
         </div>
       </div>
 
@@ -91,7 +93,7 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
           <input
             type="tel"
             name="life"
-            className='flex-1 min-w-0 text-8xl text-right outline-none bg-transparent h-fit'
+            className='flex-1 min-w-0 h-20 text-8xl text-right outline-none bg-transparent'
             value={player.life}
             onChange={e => onPlayerChange && onPlayerChange({...player, life: parseInt(e.target.value) || 0})}
           ></input>

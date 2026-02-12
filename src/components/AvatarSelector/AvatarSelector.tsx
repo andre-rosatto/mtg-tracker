@@ -25,7 +25,12 @@ export default function AvatarSelector({ index, className, onAvatarChange, ...pr
       onClick={() => setPopupOpen(!popupOpen)}
       ref={ref}
     >
-      <img src={avatars[index]} alt='Avatar' className='cursor-pointer' draggable={false} />
+      <img
+        src={avatars[index]}
+        alt='Avatar'
+        draggable={false}
+        className='cursor-pointer w-10 aspect-square'
+      />
       <PopupMenu
         triggerRef={ref}
         visible={popupOpen}
