@@ -1,6 +1,6 @@
 import type { Player } from "../../types/types";
 import AvatarSelector from "../AvatarSelector";
-import ColorPicker from "../ColorPicker";
+import { avatars } from "../AvatarSelector/avatars";
 import { RemovePlayerIcon } from "../Icons";
 import MarkerSlot from "../MarkerSlot";
 import TimedButton from "../TimedButton";
@@ -15,12 +15,15 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
   return (
     <div
       className='relative flex-1 gap-1 w-full h-38 p-2 flex flex-col items-start overflow-hidden'
-      style={{
-        backgroundColor: player.color,
-      }}
     >
+      <div
+        className='absolute inset-0 bg-cover bg-center blur-2xl'
+        style={{
+          background: `url('${avatars[player.avatar]}') no-repeat center/cover`
+        }}
+      ></div>
       {/* top bar */}
-      <div className='flex justify-between w-full'>
+      <div className='flex justify-between w-full z-10'>
         {/* header */}
         <div className='flex items-center gap-1'>
           <AvatarSelector
@@ -44,15 +47,11 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
           >
             <RemovePlayerIcon />
           </TimedButton>
-          <ColorPicker
-            color={player.color}
-            onColorChange={newColor => {onPlayerChange && onPlayerChange({...player, color: newColor})}}
-          />
         </div>
       </div>
 
       {/* data */}
-      <div className='grid grid-cols-2 w-full h-full gap-2 overflow-hidden'>
+      <div className='grid grid-cols-2 w-full h-full gap-2 overflow-hidden z-10'>
 
         {/* markers */}
         <ul className='flex flex-col gap-1 basis-1/2 overflow-auto'>
