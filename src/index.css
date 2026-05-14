@@ -5,6 +5,10 @@
   src: url("./assets/impact.woff2") format("woff2");
 }
 
+html {
+  background-color: black;
+}
+
 body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-text-stroke: 1px black;
