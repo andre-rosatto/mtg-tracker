@@ -11,14 +11,14 @@ export default function App() {
       name: 'Player 1',
       avatar: Math.floor(Math.random() * avatars.length),
       life: 20,
-      markers: [],
+      history: [20],
     },
     {
       id: Date.now() + 1,
       name: 'Player 2',
       avatar: Math.floor(Math.random() * avatars.length),
       life: 20,
-      markers: [],
+      history: [20],
     },
   ]);
 
@@ -37,7 +37,7 @@ export default function App() {
     setPlayers(prevPlayers => prevPlayers.map(player => ({
       ...player,
       life: 20,
-      markers: [],
+      history: [20],
     })));
   }
 
@@ -50,12 +50,12 @@ export default function App() {
             name: `Player ${players.length + 1}`,
             avatar: Math.floor(Math.random() * avatars.length),
             life: 20,
-            markers: [],
+            history: [20],
           }]);
         }}
         onRestart={handleGameRestart}
       />
-      <div className='overflow-auto flex-1'>
+      <div className='overflow-auto grid grid-cols-2'>
         {players.map(player => (
           <PlayerSlot key={player.id} player={player} onPlayerChange={handlePlayerChange} onPlayerDelete={handlePlayerDelete} />
         ))}

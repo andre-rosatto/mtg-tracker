@@ -21,7 +21,7 @@ export default function AvatarSelector({ index, className, onAvatarChange, ...pr
 
   return (
     <div
-      className={clsx('relative w-fit overflow-visible', className)} {...props}
+      className={clsx('relative overflow-visible', className)} {...props}
       onClick={() => setPopupOpen(!popupOpen)}
       ref={ref}
     >

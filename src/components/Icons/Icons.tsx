@@ -163,3 +163,56 @@ export function CloseIcon({
     </svg>
   );
 }
+
+export function PlusIcon({
+  color="#fff",
+  strokeWidth=0,
+  stroke=color,
+  ...props
+}: IconProps) {
+  return (
+    <svg
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill={color}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g
+        transform="translate(-63.301045,-81.702508)">
+        <path
+          fill={color}
+          strokeWidth={strokeWidth}
+          stroke={stroke}
+          d="m 75.801046,81.702508 a 12.499986,12.499986 0 0 0 -12.5,12.5 12.499986,12.499986 0 0 0 12.5,12.500002 12.499986,12.499986 0 0 0 12.5,-12.500002 12.499986,12.499986 0 0 0 -12.5,-12.5 z m -1.501696,4.667155 h 3.003392 v 6.331151 h 6.331148 v 3.003389 h -6.331148 v 6.331147 H 74.29935 v -6.331147 h -6.331148 v -3.003389 h 6.331148 z" />
+      </g>
+    </svg>
+  );
+}
+export function MinusIcon({
+  color="#fff",
+  strokeWidth=0,
+  stroke=color,
+  ...props
+}: IconProps) {
+  return (
+    <svg
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill={color}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g
+        transform="translate(-63.301045,-144.37724)">
+        <path
+          fill={color}
+          strokeWidth={strokeWidth}
+          stroke={stroke}
+          d="m 75.801046,144.37723 a 12.499986,12.499986 0 0 0 -12.5,12.5 12.499986,12.499986 0 0 0 12.5,12.5 12.499986,12.499986 0 0 0 12.5,-12.5 12.499986,12.499986 0 0 0 -12.5,-12.5 z m -7.832844,10.99831 H 83.63389 v 3.00339 H 67.968202 Z" />
+      </g>
+    </svg>
+  );
+}
