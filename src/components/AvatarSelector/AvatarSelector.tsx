@@ -37,7 +37,7 @@ export default function AvatarSelector({ index, className, onAvatarChange, ...pr
         anchor='tl'
         className='bg-black border border-neutral-400 p-1 rounded-md text-white'
       >
-        <ul className='grid grid-cols-8 gap-1'>
+        <ul className='grid grid-cols-4 gap-0.5'>
           {avatars.map((avatar, i) => (
             <li
               key={i}
