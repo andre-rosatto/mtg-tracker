@@ -5,7 +5,7 @@ import { avatars } from "../AvatarSelector/avatars";
 import { RemovePlayerIcon } from "../Icons";
 import TimedButton from "../TimedButton";
 import { MinusIcon, PlusIcon } from "../Icons/Icons";
-import { Bar, BarChart, ResponsiveContainer } from "recharts";
+import BarChart from "../barchart";
 
 interface PlayerSlotProps extends React.HTMLAttributes<HTMLDivElement> {
   player: Player;
@@ -15,8 +15,6 @@ interface PlayerSlotProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: PlayerSlotProps) {
   const [lifeChange, setLifeChange] = useState<number>(0);
-
-  const data = player.history?.map((value, index) => ({ name: index.toString(), value }));
 
   const handleLifeChange = (isPositive: boolean) => {
     if (isPositive) {
@@ -86,29 +84,19 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
             onFocus={e => e.target.select()}
           ></input>
 
-          <div className="w-full h-6 min-w-0">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={data}
-                margin={{
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0
-                }}
-                barCategoryGap={0}
-                barGap={0}
-              >
-                <Bar dataKey="value" fill="white" />
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="w-full h-6 min-w-0 bg-black/10 border border-black/15">
+            <BarChart
+              data={player.history}
+              color="#fff"
+            />
           </div>
         </div>
 
         <div>
           <div className='flex flex-col items-center'>
             <button
-              className='text-3xl w-4'
+              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-50'
+              disabled={lifeChange <= 0}
               onClick={() => handleLifeChange(true)}
             >
               <PlusIcon className="w-full" />
@@ -122,7 +110,8 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
               onFocus={e => e.target.select()}
             ></input>
             <button
-              className='text-3xl w-4'
+              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-50'
+              disabled={lifeChange <= 0}
               onClick={() => handleLifeChange(false)}
             >
               <MinusIcon className="w-full" />
