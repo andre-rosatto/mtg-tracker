@@ -6,7 +6,7 @@ interface BarChartProps extends React.ComponentProps<'canvas'> {
   className?: string;
 }
 
-export default function BarChart({ data, color, className }: BarChartProps) {
+export default function BarChart({ data, color, className, ...props }: BarChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => draw(), [data, color]);
@@ -57,6 +57,7 @@ export default function BarChart({ data, color, className }: BarChartProps) {
     <canvas
       className={"w-full h-full " + className}
       ref={canvasRef}
+      { ...props }
     />
   );
 }
