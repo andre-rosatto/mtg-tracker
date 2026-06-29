@@ -141,7 +141,7 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
         <div>
           <div className='flex flex-col items-center'>
             <button
-              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-50'
+              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-25'
               disabled={lifeChange <= 0}
               onClick={() => handleLifeChange(true)}
             >
@@ -156,7 +156,7 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
               onFocus={e => e.target.select()}
             ></input>
             <button
-              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-50'
+              className='text-3xl w-4 cursor-pointer disabled:cursor-default disabled:opacity-25'
               disabled={lifeChange <= 0}
               onClick={() => handleLifeChange(false)}
             >
