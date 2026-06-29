@@ -190,6 +190,7 @@ export function PlusIcon({
     </svg>
   );
 }
+
 export function MinusIcon({
   color="#fff",
   strokeWidth=0,
@@ -213,6 +214,46 @@ export function MinusIcon({
           stroke={stroke}
           d="m 75.801046,144.37723 a 12.499986,12.499986 0 0 0 -12.5,12.5 12.499986,12.499986 0 0 0 12.5,12.5 12.499986,12.499986 0 0 0 12.5,-12.5 12.499986,12.499986 0 0 0 -12.5,-12.5 z m -7.832844,10.99831 H 83.63389 v 3.00339 H 67.968202 Z" />
       </g>
+    </svg>
+  );
+}
+
+export function UndoIcon({
+  color="#fff",
+  ...props
+}: IconProps) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={color}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fill={color}
+        d="M 9.8480732,0 0,7.5000002 9.8480732,15 V 12.506822 H 15 V 2.4931793 H 9.8480732 Z" />
+    </svg>
+  );
+}
+
+export function RedoIcon({
+  color="#fff",
+  ...props
+}: IconProps) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={color}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fill={color}
+        d="M 5.1519268,0 15,7.5000002 5.1519268,15 V 12.506822 H 0 V 2.4931793 h 5.1519268 z" />
     </svg>
   );
 }

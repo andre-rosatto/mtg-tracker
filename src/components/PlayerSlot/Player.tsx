@@ -4,7 +4,7 @@ import AvatarSelector from "../AvatarSelector";
 import { avatars } from "../AvatarSelector/avatars";
 import { RemovePlayerIcon } from "../Icons";
 import TimedButton from "../TimedButton";
-import { MinusIcon, PlusIcon } from "../Icons/Icons";
+import { MinusIcon, PlusIcon, RedoIcon, UndoIcon } from "../Icons/Icons";
 import BarChart from "../barchart";
 
 interface PlayerSlotProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,13 +17,36 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
   const [lifeChange, setLifeChange] = useState<number>(0);
 
   const handleLifeChange = (isPositive: boolean) => {
+    const currentLife: number = player.history[player.index];
     if (isPositive) {
-      onPlayerChange && onPlayerChange({...player, life: player.life + lifeChange, history: [...player.history, player.life + lifeChange]});
+      onPlayerChange && onPlayerChange({
+        ...player,
+        history: [...player.history.slice(0, player.index + 1), currentLife + lifeChange],
+        index: player.index + 1,
+      });
     } else {
-      onPlayerChange && onPlayerChange({...player, life: Math.max(0, player.life - lifeChange), history: [...player.history, Math.max(0, player.life - lifeChange)]});
+      onPlayerChange && onPlayerChange({
+        ...player,
+        history: [...player.history.slice(0, player.index + 1), currentLife - lifeChange],
+        index: player.index + 1,
+      });
     }
     setLifeChange(0);
   };
+
+  const handleUndo = () => {
+    onPlayerChange && onPlayerChange({
+      ...player,
+      index: player.index - 1,
+    });
+  }
+
+  const handleRedo = () => {
+    onPlayerChange && onPlayerChange({
+      ...player,
+      index: player.index + 1,
+    });
+  }
 
   return (
     <div
@@ -75,21 +98,44 @@ export default function PlayerSlot({ player, onPlayerChange, onPlayerDelete }: P
             type="tel"
             name="life"
             className='max-w-30 h-14 text-6xl text-center outline-none bg-transparent'
-            value={player.life}
+            value={player.history[player.index]}
             onChange={e => onPlayerChange && onPlayerChange({
               ...player,
-              life: parseInt(e.target.value) || 0,
+              // life: parseInt(e.target.value) || 0,
               history: player.history.slice(0, -1).concat(parseInt(e.target.value) || 0)}
             )}
             onFocus={e => e.target.select()}
           ></input>
 
-          <div className="w-full h-6 min-w-0 bg-black/10 border border-black/15">
-            <BarChart
-              data={player.history}
-              color="#fff"
-            />
+          <div className='flex gap-1'>
+            {/* undo */}
+            <button
+              className="cursor-pointer disabled:opacity-25 disabled:cursor-default"
+              disabled={player.index === 0}
+              onClick={handleUndo}
+            >
+              <UndoIcon />
+            </button>
+            
+            {/* barchart */}
+            <div className="w-full h-6 min-w-0 bg-black/10 border border-black/15">
+              <BarChart
+                data={player.history}
+                color="#fff"
+                index={player.index}
+              />
+            </div>
+
+            {/* redo */}
+            <button
+              className="cursor-pointer disabled:opacity-25 disabled:cursor-default"
+              disabled={player.index == player.history.length - 1}
+              onClick={handleRedo}
+            >
+              <RedoIcon />
+            </button>
           </div>
+
         </div>
 
         <div>

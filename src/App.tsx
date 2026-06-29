@@ -10,15 +10,15 @@ export default function App() {
       id: Date.now(),
       name: 'Player 1',
       avatar: Math.floor(Math.random() * avatars.length),
-      life: 20,
       history: [20],
+      index: 0,
     },
     {
       id: Date.now() + 1,
       name: 'Player 2',
       avatar: Math.floor(Math.random() * avatars.length),
-      life: 20,
       history: [20],
+      index: 0,
     },
   ]);
 
@@ -38,6 +38,7 @@ export default function App() {
       ...player,
       life: 20,
       history: [20],
+      index: 0,
     })));
   }
 
@@ -49,8 +50,8 @@ export default function App() {
             id: Date.now(),
             name: `Player ${players.length + 1}`,
             avatar: Math.floor(Math.random() * avatars.length),
-            life: 20,
             history: [20],
+            index: 0
           }]);
         }}
         onRestart={handleGameRestart}

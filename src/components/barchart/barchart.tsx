@@ -2,14 +2,15 @@ import { useEffect, useRef } from "react";
 
 interface BarChartProps extends React.ComponentProps<'canvas'> {
   data: number[];
+  index: number;
   color?: string;
   className?: string;
 }
 
-export default function BarChart({ data, color, className, ...props }: BarChartProps) {
+export default function BarChart({ data, index, color, className, ...props }: BarChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => draw(), [data, color]);
+  useEffect(() => draw(), [data, color, index]);
 
   const draw = () => {
     const canvas = canvasRef.current;
@@ -39,16 +40,17 @@ export default function BarChart({ data, color, className, ...props }: BarChartP
     const maxValue = Math.max(...data);
     const barWidth = width / data.length;
 
-    data.forEach((value, index) => {
+    data.forEach((value, idx) => {
       const barHeight = (value / maxValue) * height;
 
       // Avoid fractional pixels
-      const x = Math.round(index * barWidth);
+      const x = Math.round(idx * barWidth);
       const y = Math.round(height - barHeight);
       const w = Math.ceil(barWidth);
       const h = Math.round(barHeight);
 
       ctx.fillStyle = color || "black";
+      ctx.globalAlpha = idx <= index ? 1.0 : 0.25
       ctx.fillRect(x, y, w, h);
     });
   };
